@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<h1 th:text="'Your account with username '+ ${username} +' has been succesfully verified!'"/>
+<h4><a th:href="@{/login}">Click here to log in!</a></h4>
+</body>
+</html>

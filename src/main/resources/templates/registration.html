@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+        form {
+            margin: 0 auto;
+            width: 400px;
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+            vertical-align: middle;
+            horiz-align: center;
+        }
+
+        form div + div {
+            margin-top: 1em;
+        }
+
+        label {
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+        }
+        p {
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+        }
+
+        input,
+
+        .class1 {
+
+        }
+        .class2 {
+
+        }
+
+        textarea {
+            font: 1em sans-serif;
+
+            width: 300px;
+            box-sizing: border-box;
+
+            border: 1px solid #999;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #000;
+        }
+
+        textarea {
+            vertical-align: top;
+            height: 5em;
+        }
+    </style>
+</head>
+<body>
+<form method="POST" th:action="@{/registration}", th:object="${user}" class="container">
+    <div th:if="${#fields.hasErrors()}" th:align="center">
+          <span class="validationError" th:align="center">
+             Please correct the problems below and resubmit.
+          </span>
+    </div>
+    <div th:align="center">
+        <input type="text" th:field="*{email}" th:align="center" placeholder="Email">
+        <div th:align="center">
+            <span class="validationError" th:align="center"
+                th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}">email Error
+            </span>
+        </div>
+    </div>
+    <div th:align="center">
+        <input type="text" th:field="*{username}" th:align="center" placeholder="Username">
+        <div th:align="center">
+            <span class="validationError" th:align="center"
+                      th:if="${#fields.hasErrors('username')}"
+                    th:errors="*{username}">username Error
+            </span>
+        </div>
+    </div>
+    <div th:align="center">
+        <input type="password" th:field="*{password}" placeholder="Password" th:align="center">
+        <div th:align="center">
+            <span class="validationError" th:align="center"
+                  th:if="${#fields.hasErrors('password')}"
+                  th:errors="*{password}">password Error
+            </span>
+        </div>
+    </div>
+    <div class="button" th:align="center">
+        <button type="submit" th:align="center">Create Account</button>
+    </div>
+    <div class="button" th:align="center">
+        <button type="reset" th:align="center">Reset form</button>
+    </div>
+    <div th:align="center">
+        <a href="/login" th:align="center">Already have an account?</a>
+    </div>
+</form>
+
+</body>
+</html>
